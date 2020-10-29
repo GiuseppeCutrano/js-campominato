@@ -20,6 +20,7 @@ var scores = 0; // punteggio
 
 
 
+
  while(bombe.length < 16){
    var numRandom = Math.floor( Math.random() * 100) + 1;
    if (bombe.includes(numRandom, bombe) == false) {
@@ -34,7 +35,7 @@ var dead = false;
        console.log("Numero scelto: " + numeriUtente);
        numeriUtente = parseInt(prompt("Scegli un numero da 1 a 100."));
        if (numeriUtente > 0 && numeriUtente < 101 && !isNaN(numeriUtente)) {
-         
+
          // valuto la possibilità che il numero inserito era stato già precedentemente introdotto
          if (listaNumUtente.includes(numeriUtente) == true) {
            alert("Errore! Numero già inserito.");
@@ -49,7 +50,14 @@ var dead = false;
            scores++;
          }
        }else {
-         alert('Il valore inserito è errato. Riprova.');
+         alert("Il valore inserito è errato. Riprova.");
        }
      }
-     console.log('Numeri scelti: ' + numeriUtente);
+      console.log('Numeri scelti: ' + numeriUtente);
+      // condizioni di morte
+     if (dead == true) {
+       console.log("Punteggio: " + scores + " punti");
+       console.log("Numero della morte: " + (listaNumUtente.slice(-1)[0]));
+     }else {
+       console.log("Hai vinto!");
+     }
